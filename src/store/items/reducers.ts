@@ -1,40 +1,35 @@
 import {
-  Item,
-  ItemDispatchTypes,
+  ItemsState,
+  ItemActionTypes,
   GET_ITEMS_FAIL,
   GET_ITEMS_LOADING,
   GET_ITEMS_SUCCESS,
-} from '../types/items';
+} from './types';
 
-export type initialStateI = {
-  loading: boolean;
-  items?: Item;
-};
-
-export const initialState: initialStateI = {
+export const initialState: ItemsState = {
   loading: false,
-  items: null,
+  data: null,
 };
 
 export const itemsReducer = (
   state = initialState,
-  action: ItemDispatchTypes
-): initialStateI => {
+  action: ItemActionTypes
+): ItemsState => {
   switch (action.type) {
     case GET_ITEMS_SUCCESS:
       return {
         loading: false,
-        items: action.items,
+        data: action.payload,
       };
     case GET_ITEMS_FAIL:
       return {
         loading: false,
-        items: null,
+        data: null,
       };
     case GET_ITEMS_LOADING:
       return {
         loading: true,
-        items: null,
+        data: null,
       };
     default:
       return state;

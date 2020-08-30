@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, TDispatch } from './store/configureStore';
-import getItems from './actions/itemsAction';
+import { RootState, TDispatch } from './store';
+import getItems from './thunk';
 
 const App: React.FC = () => {
   const items = useSelector((state: RootState) => state.items);

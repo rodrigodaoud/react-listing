@@ -6,7 +6,7 @@ import {
   Store,
 } from 'redux';
 import thunk, { ThunkDispatch } from 'redux-thunk';
-import { itemsReducer } from '../reducers/itemsReducer';
+import { itemsReducer } from './items/reducers';
 
 export const rootReducer = combineReducers({
   items: itemsReducer,

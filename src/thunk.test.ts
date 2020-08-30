@@ -1,13 +1,13 @@
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
-import * as itemsAction from './itemsAction';
+import getItems from './thunk';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const initialState = {
   loading: false,
-  items: [],
+  data: null,
 };
 const items = [
   {
@@ -43,14 +43,16 @@ describe('getItems', () => {
     const expectedActions = [
       {
         type: 'GET_ITEMS_LOADING',
+        loading: true,
       },
       {
         type: 'GET_ITEMS_SUCCESS',
-        items,
+        loading: false,
+        payload: items,
       },
     ];
 
-    return store.dispatch(itemsAction.getItems()).then(() => {
+    return store.dispatch(getItems()).then(() => {
       const actions = store.getActions();
       expect(actions).toEqual(expectedActions);
       done();
