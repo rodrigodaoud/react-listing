@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import getItems from './actions/items';
-import { AppState } from './store/configureStore';
+import { RootState, TDispatch } from './store/configureStore';
+import getItems from './actions/itemsAction';
 
 const App: React.FC = () => {
-  const items = useSelector((state: AppState) => state.items);
-  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.items);
+  const dispatch = useDispatch<TDispatch>();
+
   useEffect(() => {
     dispatch(getItems());
   }, []);
+
+  console.log(items);
+
   return (
     <div>
       <h1>Hi from React!</h1>

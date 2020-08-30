@@ -6,16 +6,17 @@ import {
   GET_ITEMS_SUCCESS,
 } from '../types/items';
 
-interface initialStateI {
+export type initialStateI = {
   loading: boolean;
   items?: Item;
-}
-
-const initialState: initialStateI = {
-  loading: false,
 };
 
-const itemsReducer = (
+export const initialState: initialStateI = {
+  loading: false,
+  items: null,
+};
+
+export const itemsReducer = (
   state = initialState,
   action: ItemDispatchTypes
 ): initialStateI => {
@@ -28,14 +29,14 @@ const itemsReducer = (
     case GET_ITEMS_FAIL:
       return {
         loading: false,
+        items: null,
       };
     case GET_ITEMS_LOADING:
       return {
         loading: true,
+        items: null,
       };
     default:
       return state;
   }
 };
-
-export default itemsReducer;
