@@ -9,7 +9,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import { itemsReducer } from './items/reducers';
 
 export const rootReducer = combineReducers({
-  items: itemsReducer,
+  itemsState: itemsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

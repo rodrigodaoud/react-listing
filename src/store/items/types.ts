@@ -2,16 +2,16 @@ export const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
 export const GET_ITEMS_FAIL = 'GET_ITEMS_FAIL';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
 
-export type Items = {
+export interface Items {
   title: string;
   description: string;
   price: string;
   email: string;
   image: string;
-};
+}
 
 export interface ItemsState {
-  data: Items;
+  items: Items[];
   loading: boolean;
 }
 
@@ -28,7 +28,7 @@ export interface ItemFailAction {
 export interface ItemSuccessAction {
   type: typeof GET_ITEMS_SUCCESS;
   loading: boolean;
-  payload: Items;
+  items: Items[];
 }
 
 export type ItemActionTypes =

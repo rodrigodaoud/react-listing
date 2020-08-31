@@ -1,3 +1,4 @@
+import { Reducer } from 'redux';
 import {
   ItemsState,
   ItemActionTypes,
@@ -8,7 +9,7 @@ import {
 
 export const initialState: ItemsState = {
   loading: false,
-  data: null,
+  items: [],
 };
 
 export const itemsReducer = (
@@ -19,17 +20,17 @@ export const itemsReducer = (
     case GET_ITEMS_SUCCESS:
       return {
         loading: false,
-        data: action.payload,
+        items: action.items,
       };
     case GET_ITEMS_FAIL:
       return {
         loading: false,
-        data: null,
+        items: null,
       };
     case GET_ITEMS_LOADING:
       return {
         loading: true,
-        data: null,
+        items: null,
       };
     default:
       return state;

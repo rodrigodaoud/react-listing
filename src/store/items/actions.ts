@@ -13,11 +13,11 @@ export const getItemsLoading = (): ItemActionTypes => {
   };
 };
 
-export const getItemsSuccess = (items: Items): ItemActionTypes => {
+export const getItemsSuccess = (items: Items[]): ItemActionTypes => {
   return {
     type: GET_ITEMS_SUCCESS,
     loading: false,
-    payload: items,
+    items,
   };
 };
 

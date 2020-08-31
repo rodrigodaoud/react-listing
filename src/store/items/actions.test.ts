@@ -1,9 +1,4 @@
-import {
-  Items,
-  GET_ITEMS_LOADING,
-  GET_ITEMS_SUCCESS,
-  GET_ITEMS_FAIL,
-} from './types';
+import { GET_ITEMS_LOADING, GET_ITEMS_SUCCESS, GET_ITEMS_FAIL } from './types';
 import { getItemsFail, getItemsLoading, getItemsSuccess } from './actions';
 import ItemsMock from '../../data/ItemsMock';
 
@@ -24,7 +19,7 @@ describe('getItemsSuccess', () => {
 
     expect(action).toEqual({
       type: GET_ITEMS_SUCCESS,
-      payload: ItemsMock,
+      items: ItemsMock,
       loading: false,
     });
   });

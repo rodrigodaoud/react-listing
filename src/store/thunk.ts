@@ -1,12 +1,12 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
-import { RootState, TDispatch } from './store';
+import { RootState, TDispatch } from '.';
 import {
   getItemsFail,
   getItemsLoading,
   getItemsSuccess,
-} from './store/items/actions';
+} from './items/actions';
 
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const targetUrl =
@@ -20,7 +20,7 @@ const getItems = (): AppThunk => async (dispatch: TDispatch) => {
   return axios
     .get(url)
     .then((response) => {
-      dispatch(getItemsSuccess(response.data));
+      dispatch(getItemsSuccess(response.data.items));
     })
     .catch((err) => {
       dispatch(getItemsFail());

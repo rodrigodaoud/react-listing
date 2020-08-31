@@ -15,7 +15,7 @@ describe('items reducer', () => {
     const newState = itemsReducer(initialState, getItemsSuccess(ItemsMock));
 
     it('fetched characters', () => {
-      expect(newState.data).toEqual(ItemsMock);
+      expect(newState.items).toEqual(ItemsMock);
     });
     it('is not fetching', () => {
       expect(newState.loading).toBe(false);
