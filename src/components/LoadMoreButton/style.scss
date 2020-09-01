@@ -1,0 +1,17 @@
+.item-list {
+  &__load-wrapper {
+    width: 172px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  &__load-btn {
+    background-color: $-c-green;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 12px 0;
+    color: $-c-white;
+    font-size: 16px;
+    outline: none;
+  }
+}

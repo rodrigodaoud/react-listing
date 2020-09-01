@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import getItems from '../store/items/thunk';
@@ -20,11 +20,20 @@ export const Home: React.FC<IProps> = ({
 }: IProps) => {
   React.useEffect(() => {
     getItemsList();
-  }, [getItemsList]);
+  }, []);
+
+  const [itemsLength, setItemsLength] = useState(5);
+  const slicedItems = items.slice(0, itemsLength);
+
+  const loadMoreItems = () => {
+    if (slicedItems.length < items.length) {
+      setItemsLength(itemsLength + 5);
+    }
+  };
 
   return (
     <div>
-      <ItemsList items={items} />
+      <ItemsList items={slicedItems} loadMoreItems={loadMoreItems} />
     </div>
   );
 };

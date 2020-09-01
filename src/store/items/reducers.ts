@@ -9,15 +9,12 @@ import {
 export const initialState: ItemsState = {
   loading: false,
   items: [],
-  itemsLength: 5,
 };
 
 export const itemsReducer = (
   state = initialState,
   action: ItemActionTypes
 ): ItemsState => {
-  console.log(action);
-  console.log(state);
   switch (action.type) {
     case GET_ITEMS_FAIL:
       return {
@@ -31,8 +28,9 @@ export const itemsReducer = (
       };
     case GET_ITEMS_SUCCESS:
       return {
+        ...state,
         loading: false,
-        items: [...action.items.slice(0, state.itemsLength)],
+        items: action.items,
       };
     default:
       return state;

@@ -1,6 +1,7 @@
 export const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
 export const GET_ITEMS_FAIL = 'GET_ITEMS_FAIL';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
+export const SET_ITEMS_LENGTH = 'SET_ITEMS_LENGTH';
 
 export interface Items {
   title: string;
@@ -13,7 +14,6 @@ export interface Items {
 export interface ItemsState {
   loading: boolean;
   items: Items[];
-  itemsLength?: number;
 }
 
 export interface ItemLoadingAction {

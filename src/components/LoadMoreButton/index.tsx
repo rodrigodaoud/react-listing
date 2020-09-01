@@ -1,9 +1,25 @@
 import React from 'react';
 
-const LoadMoreButton: React.FC = () => {
+import './style.scss';
+
+interface IProps {
+  loadMoreItems: () => void;
+}
+
+const LoadMoreButton: React.FC<IProps> = ({ loadMoreItems }: IProps) => {
+  const onClickHandler = (evt: React.MouseEvent) => {
+    evt.preventDefault();
+    loadMoreItems();
+  };
   return (
-    <div>
-      <button type="button">Load More</button>
+    <div className="item-list__load-wrapper">
+      <button
+        className="item-list__load-btn"
+        type="button"
+        onClick={onClickHandler}
+      >
+        Load More
+      </button>
     </div>
   );
 };
