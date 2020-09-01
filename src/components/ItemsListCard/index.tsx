@@ -5,13 +5,18 @@ import './style.scss';
 
 interface IProps {
   item: Items;
+  addToFavourites: (item) => void;
 }
 
-const ItemsListCard: React.FC<IProps> = ({ item }: IProps) => {
+const ItemsListCard: React.FC<IProps> = ({ item, addToFavourites }: IProps) => {
   const description =
     item.description.length > 150
       ? `${item.description.substring(0, 150)}...`
       : item.description;
+
+  const onClickHandler = (e) => {
+    addToFavourites(item);
+  };
 
   return (
     <li className="items-list__item">
@@ -22,6 +27,9 @@ const ItemsListCard: React.FC<IProps> = ({ item }: IProps) => {
         <p className="items-list__description">{description}</p>
         <p className="items-list__email">{item.email}</p>
       </div>
+      <button type="button" onClick={onClickHandler}>
+        ADD
+      </button>
     </li>
   );
 };

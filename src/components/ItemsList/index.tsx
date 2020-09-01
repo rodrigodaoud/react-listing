@@ -8,14 +8,25 @@ import './style.scss';
 interface IProps {
   items: Items[];
   loadMoreItems: () => void;
+  addToFavourites: (item) => void;
 }
 
-const ItemsList: React.FC<IProps> = ({ items, loadMoreItems }: IProps) => {
+const ItemsList: React.FC<IProps> = ({
+  items,
+  loadMoreItems,
+  addToFavourites,
+}: IProps) => {
   return (
     <div className="items-list__wrapper">
       <ul className="items-list container">
         {items &&
-          items.map((item) => <ItemsListCard key={item.title} item={item} />)}
+          items.map((item) => (
+            <ItemsListCard
+              key={item.title}
+              item={item}
+              addToFavourites={addToFavourites}
+            />
+          ))}
       </ul>
       {items.length < 20 ? (
         <LoadMoreButton loadMoreItems={loadMoreItems} />

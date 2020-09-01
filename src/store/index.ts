@@ -6,10 +6,12 @@ import {
   Store,
 } from 'redux';
 import thunk, { ThunkDispatch } from 'redux-thunk';
+import { favouritesReducer } from './favourites/reducers';
 import { itemsReducer } from './items/reducers';
 
 export const rootReducer = combineReducers({
   itemsState: itemsReducer,
+  favouritesState: favouritesReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
