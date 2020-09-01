@@ -10,6 +10,27 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'ts-loader',
       },
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                path.resolve(__dirname, './src/styles/_variables.scss'),
+                path.resolve(__dirname, './src/styles/_fonts.scss'),
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: ['file-loader'],
+      },
     ],
   },
   resolve: {

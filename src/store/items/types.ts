@@ -11,8 +11,9 @@ export interface Items {
 }
 
 export interface ItemsState {
-  items: Items[];
   loading: boolean;
+  items: Items[];
+  itemsLength?: number;
 }
 
 export interface ItemLoadingAction {

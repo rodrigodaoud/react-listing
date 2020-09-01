@@ -1,6 +1,6 @@
-import { itemsReducer, initialState } from './reducers';
-import { getItemsLoading, getItemsSuccess } from './actions';
-import ItemsMock from '../../data/ItemsMock';
+import { itemsReducer, initialState } from '../reducers';
+import { getItemsLoading, getItemsSuccess } from '../actions';
+import ItemsMock from '../../../data/ItemsMock';
 
 describe('items reducer', () => {
   describe('GET_ITEMS_LOADING', () => {

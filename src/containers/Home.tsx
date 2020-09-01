@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import getItems from '../store/thunk';
-import { Items, ItemsState } from '../store/items/types';
+import getItems from '../store/items/thunk';
+import { Items } from '../store/items/types';
 
 import ItemsList from '../components/ItemsList';
 import { RootState } from '../store';
@@ -13,10 +13,14 @@ interface IProps {
   getItemsList: () => void;
 }
 
-const Home: React.FC<IProps> = ({ items, loading, getItemsList }: IProps) => {
+export const Home: React.FC<IProps> = ({
+  items,
+  loading,
+  getItemsList,
+}: IProps) => {
   React.useEffect(() => {
     getItemsList();
-  }, []);
+  }, [getItemsList]);
 
   return (
     <div>
