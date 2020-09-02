@@ -7,11 +7,13 @@ import ItemsMock from '../../data/ItemsMock';
 describe('ItemsList', () => {
   it('renders', () => {
     const items: Items[] = [];
+    const favourites: Items[] = [];
     const loadMoreItems = jest.fn();
     const addToFavourites = jest.fn();
     const wrapper = shallow(
       <ItemsList
         items={items}
+        favourites={favourites}
         loadMoreItems={loadMoreItems}
         addToFavourites={addToFavourites}
       />
@@ -22,11 +24,13 @@ describe('ItemsList', () => {
 
   it('renders with items', () => {
     const items: Items[] = ItemsMock;
+    const favourites: Items[] = ItemsMock;
     const loadMoreItems = jest.fn();
     const addToFavourites = jest.fn();
     const wrapper = shallow(
       <ItemsList
         items={items}
+        favourites={favourites}
         loadMoreItems={loadMoreItems}
         addToFavourites={addToFavourites}
       />

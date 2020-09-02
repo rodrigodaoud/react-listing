@@ -1,9 +1,15 @@
 import React from 'react';
 
-const FavouritesButton: React.FC = () => {
+interface IProps {
+  toggleFavourites: () => void;
+}
+
+const FavouritesButton: React.FC<IProps> = ({ toggleFavourites }: IProps) => {
   return (
     <div>
-      <button type="button">Favourites</button>
+      <button type="button" onClick={toggleFavourites}>
+        Favourites
+      </button>
     </div>
   );
 };

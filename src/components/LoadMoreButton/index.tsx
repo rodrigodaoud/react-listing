@@ -17,7 +17,7 @@ const LoadMoreButton: React.FC<IProps> = ({ loadMoreItems }: IProps) => {
         type="button"
         onClick={onClickHandler}
       >
-        Load
+        Load More
       </button>
     </div>
   );

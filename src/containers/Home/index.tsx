@@ -8,6 +8,7 @@ import ItemsList from '../../components/ItemsList';
 import { RootState } from '../../store';
 import FavouritesButton from '../../components/FavouritesButton';
 import addToFavouritesSuccess from '../../store/favourites/actions';
+import FavouritesModal from '../../components/FavouritesModal';
 
 interface IProps {
   items: Items[];
@@ -30,6 +31,7 @@ export const Home: React.FC<IProps> = ({
 
   const pageOffset = 5;
   const [itemsLength, setItemsLength] = useState(pageOffset);
+  const [toggleModal, setToggleModal] = useState(false);
   const slicedItems = items.slice(0, itemsLength);
 
   const loadMoreItems = () => {
@@ -38,9 +40,14 @@ export const Home: React.FC<IProps> = ({
     }
   };
 
+  const toggleFavourites = () => {
+    setToggleModal(!toggleModal);
+  };
+
   return (
     <div>
-      <FavouritesButton />
+      <FavouritesButton toggleFavourites={toggleFavourites} />
+      {toggleModal ? <FavouritesModal favourites={favourites} /> : null}
       <ItemsList
         items={slicedItems}
         favourites={favourites}
@@ -52,7 +59,6 @@ export const Home: React.FC<IProps> = ({
 };
 
 const mapStateToProps = (store: RootState) => {
-  console.log(store.favouritesState.favourites);
   return {
     items: store.itemsState.items,
     loading: store.itemsState.loading,
