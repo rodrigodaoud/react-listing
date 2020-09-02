@@ -2,26 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ItemsList from '.';
 import { Items } from '../../store/items/types';
-import ItemsMock from '../../data/ItemsMock';
+import { ItemsMock } from '../../data/ItemsMock';
 
 describe('ItemsList', () => {
-  it('renders', () => {
-    const items: Items[] = [];
-    const favourites: Items[] = [];
-    const loadMoreItems = jest.fn();
-    const addToFavourites = jest.fn();
-    const wrapper = shallow(
-      <ItemsList
-        items={items}
-        favourites={favourites}
-        loadMoreItems={loadMoreItems}
-        addToFavourites={addToFavourites}
-      />
-    );
-
-    expect(wrapper.exists()).toBe(true);
-  });
-
   it('renders with items', () => {
     const items: Items[] = ItemsMock;
     const favourites: Items[] = ItemsMock;
@@ -37,6 +20,7 @@ describe('ItemsList', () => {
     );
     const item: Items = items[0];
 
+    expect(wrapper.exists()).toBe(true);
     expect(item).toBeDefined();
   });
 });

@@ -8,7 +8,7 @@ interface IProps {
 
 const FavouritesCard: React.FC<IProps> = ({ favourite }: IProps) => {
   return (
-    <div className="favourites__card">
+    <>
       <img
         className="favourites__card__img"
         src={favourite.image}
@@ -16,11 +16,8 @@ const FavouritesCard: React.FC<IProps> = ({ favourite }: IProps) => {
       />
       <div className="favourites__card__content">
         <h2 className="favourites__card__title">{favourite.title}</h2>
-        <button className="favourites__card__remove" type="button">
-          X
-        </button>
       </div>
-    </div>
+    </>
   );
 };
 

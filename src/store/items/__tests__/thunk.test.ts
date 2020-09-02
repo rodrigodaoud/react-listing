@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import getItems from '../thunk';
-import ItemsMock from '../../../data/ItemsMock';
+import { ItemsMock } from '../../../data/ItemsMock';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

@@ -7,7 +7,10 @@ import { Items } from '../../store/items/types';
 import ItemsList from '../../components/ItemsList';
 import { RootState } from '../../store';
 import FavouritesButton from '../../components/FavouritesButton';
-import addToFavouritesSuccess from '../../store/favourites/actions';
+import {
+  addToFavouritesSuccess,
+  removeFavouriteSuccess,
+} from '../../store/favourites/actions';
 import FavouritesModal from '../../components/FavouritesModal';
 
 interface IProps {
@@ -15,7 +18,8 @@ interface IProps {
   favourites: Items[];
   loading: boolean;
   getItemsList: () => void;
-  addToFavourites: (item) => void;
+  addToFavourites: (item: Items) => void;
+  removeFavourite: (favourite: Items) => void;
 }
 
 export const Home: React.FC<IProps> = ({
@@ -24,6 +28,7 @@ export const Home: React.FC<IProps> = ({
   loading,
   getItemsList,
   addToFavourites,
+  removeFavourite,
 }: IProps) => {
   React.useEffect(() => {
     getItemsList();
@@ -58,6 +63,7 @@ export const Home: React.FC<IProps> = ({
         <FavouritesModal
           favourites={favourites}
           toggleFavourites={toggleFavourites}
+          removeFavourite={removeFavourite}
         />
       ) : null}
       <ItemsList
@@ -82,6 +88,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getItemsList: () => dispatch(getItems()),
     addToFavourites: (item) => dispatch(addToFavouritesSuccess(item)),
+    removeFavourite: (favourite) => dispatch(removeFavouriteSuccess(favourite)),
   };
 };
 

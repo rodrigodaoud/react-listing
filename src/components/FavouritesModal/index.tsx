@@ -6,12 +6,17 @@ import './style.scss';
 interface IProps {
   favourites: Items[];
   toggleFavourites: () => void;
+  removeFavourite: (favourite: Items) => void;
 }
 
 const FavouritesModal: React.FC<IProps> = ({
   favourites,
   toggleFavourites,
+  removeFavourite,
 }: IProps) => {
+  const onClickHandler = (favourite: Items) => {
+    removeFavourite(favourite);
+  };
   return (
     <div className="favourites">
       <div className="favourites__card__wrapper">
@@ -24,7 +29,16 @@ const FavouritesModal: React.FC<IProps> = ({
           X
         </button>
         {favourites.map((favourite) => (
-          <FavouritesCard key={favourite.title} favourite={favourite} />
+          <div key={favourite.title} className="favourites__card">
+            <FavouritesCard favourite={favourite} />
+            <button
+              className="favourites__remove"
+              type="button"
+              onClick={() => onClickHandler(favourite)}
+            >
+              X
+            </button>
+          </div>
         ))}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { GET_ITEMS_LOADING, GET_ITEMS_SUCCESS, GET_ITEMS_FAIL } from '../types';
 import { getItemsFail, getItemsLoading, getItemsSuccess } from '../actions';
-import ItemsMock from '../../../data/ItemsMock';
+import { ItemsMock } from '../../../data/ItemsMock';
 
 describe('getItemsLoading', () => {
   it('creates ItemLoadingAction', () => {

@@ -29,7 +29,7 @@ const ItemsList: React.FC<IProps> = ({
       <ul className="items-list container">
         {items.map((item) => (
           <div key={item.title}>
-            <ItemsListCard item={item} addToFavourites={addToFavourites} />
+            <ItemsListCard item={item} />
             <button type="button" onClick={() => onClickHandler(item)}>
               ADD
             </button>

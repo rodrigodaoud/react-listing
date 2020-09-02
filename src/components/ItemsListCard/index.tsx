@@ -5,10 +5,9 @@ import './style.scss';
 
 interface IProps {
   item: Items;
-  addToFavourites: (item) => void;
 }
 
-const ItemsListCard: React.FC<IProps> = ({ item, addToFavourites }: IProps) => {
+const ItemsListCard: React.FC<IProps> = ({ item }: IProps) => {
   const description =
     item.description.length > 150
       ? `${item.description.substring(0, 150)}...`

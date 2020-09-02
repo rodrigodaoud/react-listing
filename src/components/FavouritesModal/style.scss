@@ -15,8 +15,8 @@
 
   &__close {
     position: absolute;
-    top: 50px;
-    right: 25px;
+    top: 10px;
+    right: 10px;
     border: none;
     background-color: white;
     border-radius: 50%;
@@ -27,7 +27,9 @@
   }
 
   &__card {
+    position: relative;
     &__wrapper {
+      position: relative;
       height: 80%;
       padding: 20px 10px 10px;
       background-color: $-c-light-gray;
@@ -35,5 +37,17 @@
       overflow: scroll;
       border-radius: 10px;
     }
+  }
+
+  &__remove {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: none;
+    background: transparent;
+    padding: 5px 8px;
+    color: $-c-red;
+    font-weight: bold;
+    outline: none;
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Items } from '../../store/items/types';
-import ItemsMock from '../../data/ItemsMock';
+import { ItemsMock } from '../../data/ItemsMock';
 import { Home } from '.';
 
 interface renderElementParameters {
