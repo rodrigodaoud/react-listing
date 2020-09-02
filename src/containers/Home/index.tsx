@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import getItems from '../store/items/thunk';
-import { Items } from '../store/items/types';
+import getItems from '../../store/items/thunk';
+import { Items } from '../../store/items/types';
 
-import ItemsList from '../components/ItemsList';
-import { RootState } from '../store';
-import FavouritesButton from '../components/FavouritesButton';
-import addToFavouritesSuccess from '../store/favourites/actions';
+import ItemsList from '../../components/ItemsList';
+import { RootState } from '../../store';
+import FavouritesButton from '../../components/FavouritesButton';
+import addToFavouritesSuccess from '../../store/favourites/actions';
 
 interface IProps {
   items: Items[];

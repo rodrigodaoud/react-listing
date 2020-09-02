@@ -9,5 +9,8 @@ module.exports = {
   },
   moduleDirectories: ['node_modules', 'src'],
   moduleFileExtensions: ['ts', 'tsx', 'js'],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };

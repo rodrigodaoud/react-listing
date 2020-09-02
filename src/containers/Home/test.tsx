@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Items } from '../store/items/types';
-import ItemsMock from '../data/ItemsMock';
-import { Home } from './Home';
+import { Items } from '../../store/items/types';
+import ItemsMock from '../../data/ItemsMock';
+import { Home } from '.';
 
 interface renderElementParameters {
   getItemsList: jest.Mock;

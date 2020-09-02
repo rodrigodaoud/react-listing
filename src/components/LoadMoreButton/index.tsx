@@ -7,8 +7,7 @@ interface IProps {
 }
 
 const LoadMoreButton: React.FC<IProps> = ({ loadMoreItems }: IProps) => {
-  const onClickHandler = (evt: React.MouseEvent) => {
-    evt.preventDefault();
+  const onClickHandler = () => {
     loadMoreItems();
   };
   return (
@@ -18,7 +17,7 @@ const LoadMoreButton: React.FC<IProps> = ({ loadMoreItems }: IProps) => {
         type="button"
         onClick={onClickHandler}
       >
-        Load More
+        Load
       </button>
     </div>
   );
