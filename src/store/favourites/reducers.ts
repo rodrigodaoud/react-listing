@@ -12,7 +12,6 @@ export const favouritesReducer = (
   state = initialState,
   action: FavouritesActionTypes
 ): FavouritesState => {
-  console.log(state);
   switch (action.type) {
     case ADD_TO_FAVOURITES_SUCCESS:
       return {

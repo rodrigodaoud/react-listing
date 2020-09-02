@@ -14,10 +14,6 @@ const ItemsListCard: React.FC<IProps> = ({ item, addToFavourites }: IProps) => {
       ? `${item.description.substring(0, 150)}...`
       : item.description;
 
-  const onClickHandler = (e) => {
-    addToFavourites(item);
-  };
-
   return (
     <li className="items-list__item">
       <img className="items-list__image" src={item.image} alt={item.title} />
@@ -27,9 +23,6 @@ const ItemsListCard: React.FC<IProps> = ({ item, addToFavourites }: IProps) => {
         <p className="items-list__description">{description}</p>
         <p className="items-list__email">{item.email}</p>
       </div>
-      <button type="button" onClick={onClickHandler}>
-        ADD
-      </button>
     </li>
   );
 };

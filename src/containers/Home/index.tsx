@@ -11,6 +11,7 @@ import addToFavouritesSuccess from '../../store/favourites/actions';
 
 interface IProps {
   items: Items[];
+  favourites: Items[];
   loading: boolean;
   getItemsList: () => void;
   addToFavourites: (item) => void;
@@ -18,6 +19,7 @@ interface IProps {
 
 export const Home: React.FC<IProps> = ({
   items,
+  favourites,
   loading,
   getItemsList,
   addToFavourites,
@@ -41,6 +43,7 @@ export const Home: React.FC<IProps> = ({
       <FavouritesButton />
       <ItemsList
         items={slicedItems}
+        favourites={favourites}
         loadMoreItems={loadMoreItems}
         addToFavourites={addToFavourites}
       />
@@ -49,9 +52,11 @@ export const Home: React.FC<IProps> = ({
 };
 
 const mapStateToProps = (store: RootState) => {
+  console.log(store.favouritesState.favourites);
   return {
     items: store.itemsState.items,
     loading: store.itemsState.loading,
+    favourites: store.favouritesState.favourites,
   };
 };
 
