@@ -32,6 +32,7 @@ export const Home: React.FC<IProps> = ({
   const pageOffset = 5;
   const [itemsLength, setItemsLength] = useState(pageOffset);
   const [toggleModal, setToggleModal] = useState(false);
+  const [bodyScroll, setBodyScroll] = useState(false);
   const slicedItems = items.slice(0, itemsLength);
 
   const loadMoreItems = () => {
@@ -42,12 +43,23 @@ export const Home: React.FC<IProps> = ({
 
   const toggleFavourites = () => {
     setToggleModal(!toggleModal);
+    setBodyScroll(!bodyScroll);
+    if (bodyScroll) {
+      document.body.style.overflow = 'unset';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   return (
-    <div>
+    <div className="home">
       <FavouritesButton toggleFavourites={toggleFavourites} />
-      {toggleModal ? <FavouritesModal favourites={favourites} /> : null}
+      {toggleModal ? (
+        <FavouritesModal
+          favourites={favourites}
+          toggleFavourites={toggleFavourites}
+        />
+      ) : null}
       <ItemsList
         items={slicedItems}
         favourites={favourites}

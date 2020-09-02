@@ -1,0 +1,33 @@
+.favourites {
+  &__card {
+    display: flex;
+    background-color: $-c-white;
+    margin: 10px 0;
+    padding: 0 10px 0 0;
+    border-radius: 5px;
+
+    &__img {
+      width: 80px;
+      height: 70px;
+      margin: 0 10px 0 0;
+      border-radius: 5px 0 0 5px;
+      object-fit: cover;
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__remove {
+      border: none;
+      background: transparent;
+      padding: 5px 8px;
+      color: $-c-red;
+      font-weight: bold;
+      outline: none;
+    }
+  }
+}
