@@ -1,0 +1,26 @@
+.search-bar {
+  margin: 0 0 20px;
+  position: relative;
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 40px;
+    outline: none;
+    background-color: $-c-light-gray;
+    border-radius: 20px;
+    border: none;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 7px;
+    left: 25px;
+    font-size: 22px;
+    opacity: 0.5;
+  }
+}

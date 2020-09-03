@@ -1,4 +1,6 @@
 import React from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
+import './style.scss';
 
 interface IProps {
   search: (value: string) => void;
@@ -6,10 +8,14 @@ interface IProps {
 
 const SearchBar: React.FC<IProps> = ({ search }: IProps) => {
   return (
-    <input
-      placeholder="What are you looking for..."
-      onChange={(e) => search(e.target.value)}
-    />
+    <div className="search-bar container">
+      <AiOutlineSearch className="search-bar__icon" />
+      <input
+        className="search-bar__input"
+        placeholder="What are you looking for..."
+        onChange={(e) => search(e.target.value)}
+      />
+    </div>
   );
 };
 

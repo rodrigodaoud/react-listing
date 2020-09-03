@@ -15,6 +15,9 @@ import FavouritesModal from '../../components/FavouritesModal';
 import FavouritesButton from '../../components/FavouritesButton';
 import SearchBar from '../../components/SearchBar';
 
+import Logo from '../../assets/wallapop-logo.png';
+import './style.scss';
+
 interface IProps {
   items: Items[];
   favourites: Items[];
@@ -67,6 +70,9 @@ export const Home: React.FC<IProps> = ({
 
   return (
     <div className="home">
+      <div className="home__logo container">
+        <img className="home__logo-img" src={Logo} alt="wallapop" />
+      </div>
       <SearchBar search={search} />
       <FavouritesButton toggleFavourites={toggleFavourites} />
       {toggleModal ? (
