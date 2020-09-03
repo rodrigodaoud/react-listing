@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Items } from '../../store/items/types';
 import ItemsListCard from '../ItemsListCard';
 import LoadMoreButton from '../LoadMoreButton';
@@ -9,31 +10,26 @@ interface IProps {
   items: Items[];
   favourites: Items[];
   loadMoreItems: () => void;
-  addToFavourites: (item) => void;
+  onAddToFavourites: (item) => void;
 }
 
 const ItemsList: React.FC<IProps> = ({
   items,
   favourites,
   loadMoreItems,
-  addToFavourites,
+  onAddToFavourites,
 }: IProps) => {
-  const onClickHandler = (item: Items) => {
-    if (!favourites.some((favourite) => favourite.title === item.title)) {
-      addToFavourites(item);
-    }
-  };
-
   return (
     <div className="items-list__wrapper">
       <ul className="items-list container">
         {items.map((item) => (
-          <div key={item.title}>
-            <ItemsListCard item={item} />
-            <button type="button" onClick={() => onClickHandler(item)}>
-              ADD
-            </button>
-          </div>
+          <li key={item.title} className="items-list__card">
+            <ItemsListCard
+              item={item}
+              favourites={favourites}
+              onAddToFavourites={onAddToFavourites}
+            />
+          </li>
         ))}
       </ul>
       {items.length < 20 ? (

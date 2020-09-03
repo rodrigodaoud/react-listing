@@ -1,15 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Items } from '../../store/items/types';
-import { ItemMock } from '../../data/ItemsMock';
+import { ItemMock, ItemsMock } from '../../data/ItemsMock';
 import ItemsListCard from '.';
 
 describe('Items List Card', () => {
   let item: Items;
+  let favourites: Items[];
+  let onAddToFavourites;
   let wrapper;
   beforeEach(() => {
     item = ItemMock;
-    wrapper = shallow(<ItemsListCard item={item} />);
+    favourites = ItemsMock;
+    onAddToFavourites = jest.fn();
+    wrapper = shallow(
+      <ItemsListCard
+        item={item}
+        favourites={favourites}
+        onAddToFavourites={onAddToFavourites}
+      />
+    );
   });
 
   it('should exist', () => {

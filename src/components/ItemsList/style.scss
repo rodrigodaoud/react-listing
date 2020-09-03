@@ -3,4 +3,31 @@
     background-color: $-c-light-gray;
     padding: 10px 0;
   }
+
+  &__card {
+    position: relative;
+    background-color: $-c-white;
+    height: 150px;
+    display: flex;
+    margin: 10px 0;
+    padding: 0 10px 0 0;
+    border-radius: 10px;
+  }
+
+  &__add {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    right: 0;
+
+    &-btn {
+      font-size: 20px;
+
+      &.fill {
+        color: $-c-yellow;
+      }
+    }
+  }
 }

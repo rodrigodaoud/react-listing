@@ -1,0 +1,18 @@
+.favourites {
+  &__btn {
+    border: none;
+    outline: none;
+    background-color: $-c-white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    &-star {
+      color: $-c-yellow;
+      font-size: 18px;
+      margin: 0 5px 0 0;
+    }
+  }
+}

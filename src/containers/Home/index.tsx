@@ -56,6 +56,12 @@ export const Home: React.FC<IProps> = ({
     }
   };
 
+  const onAddToFavourites = (item: Items) => {
+    if (!favourites.some((favourite) => favourite.title === item.title)) {
+      addToFavourites(item);
+    }
+  };
+
   return (
     <div className="home">
       <FavouritesButton toggleFavourites={toggleFavourites} />
@@ -70,7 +76,7 @@ export const Home: React.FC<IProps> = ({
         items={slicedItems}
         favourites={favourites}
         loadMoreItems={loadMoreItems}
-        addToFavourites={addToFavourites}
+        onAddToFavourites={onAddToFavourites}
       />
     </div>
   );
