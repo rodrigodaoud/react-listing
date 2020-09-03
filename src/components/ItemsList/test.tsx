@@ -10,12 +10,14 @@ describe('ItemsList', () => {
     const favourites: Items[] = ItemsMock;
     const loadMoreItems = jest.fn();
     const onAddToFavourites = jest.fn();
+    const sortItems = jest.fn();
     const wrapper = shallow(
       <ItemsList
         items={items}
         favourites={favourites}
         loadMoreItems={loadMoreItems}
         onAddToFavourites={onAddToFavourites}
+        sortItems={sortItems}
       />
     );
     const item: Items = items[0];

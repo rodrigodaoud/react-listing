@@ -6,6 +6,7 @@ import {
   GET_ITEMS_LOADING,
   SEARCH_SUCCESS,
   LOAD_MORE_SUCCESS,
+  SORT_ITEMS_SUCCESS,
 } from './types';
 
 export const getItemsLoading = (): ItemActionTypes => {
@@ -34,6 +35,13 @@ export const searchSuccess = (value: string): ItemActionTypes => {
   return {
     type: SEARCH_SUCCESS,
     value,
+  };
+};
+
+export const sortItemsSuccess = (key: string): ItemActionTypes => {
+  return {
+    type: SORT_ITEMS_SUCCESS,
+    key,
   };
 };
 

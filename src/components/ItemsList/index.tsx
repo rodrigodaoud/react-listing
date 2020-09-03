@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { Items } from '../../store/items/types';
+
 import ItemsListCard from '../ItemsListCard';
+import ItemsFilter from '../ItemsFilter';
 import LoadMoreButton from '../LoadMoreButton';
 
 import './style.scss';
@@ -10,7 +12,8 @@ interface IProps {
   items: Items[];
   favourites: Items[];
   loadMoreItems: () => void;
-  onAddToFavourites: (item) => void;
+  onAddToFavourites: (item: Items) => void;
+  sortItems: (key: string) => void;
 }
 
 const ItemsList: React.FC<IProps> = ({
@@ -18,9 +21,11 @@ const ItemsList: React.FC<IProps> = ({
   favourites,
   loadMoreItems,
   onAddToFavourites,
+  sortItems,
 }: IProps) => {
   return (
     <div className="items-list__wrapper">
+      <ItemsFilter sortItems={sortItems} />
       <ul className="items-list container">
         {items.map((item) => (
           <li key={item.title} className="items-list__card">

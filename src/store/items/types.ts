@@ -2,6 +2,7 @@ export const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
 export const GET_ITEMS_FAIL = 'GET_ITEMS_FAIL';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
+export const SORT_ITEMS_SUCCESS = 'SORT_ITEMS_SUCCESS';
 export const LOAD_MORE_SUCCESS = 'LOAD_MORE_SUCCESS';
 
 export interface Items {
@@ -41,6 +42,11 @@ export interface SearchSuccessAction {
   value: string;
 }
 
+export interface SortItemsSuccessAction {
+  type: typeof SORT_ITEMS_SUCCESS;
+  key: string;
+}
+
 export type LoadMoreSuccessAction = {
   type: typeof LOAD_MORE_SUCCESS;
   items: Items[];
@@ -51,4 +57,5 @@ export type ItemActionTypes =
   | ItemSuccessAction
   | ItemLoadingAction
   | SearchSuccessAction
+  | SortItemsSuccessAction
   | LoadMoreSuccessAction;

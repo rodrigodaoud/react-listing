@@ -6,6 +6,7 @@ import {
   GET_ITEMS_SUCCESS,
   SEARCH_SUCCESS,
   LOAD_MORE_SUCCESS,
+  SORT_ITEMS_SUCCESS,
 } from './types';
 
 export const initialState: ItemsState = {
@@ -46,6 +47,28 @@ export const itemsReducer = (
         slicedItems: [...state.items.slice(0, sliceTo)],
         filteredItems: [...state.items.slice(0, sliceTo)],
         pageOffset: sliceTo,
+      };
+    }
+    case SORT_ITEMS_SUCCESS: {
+      const { key } = action;
+      return {
+        ...state,
+        filteredItems: [
+          ...state.filteredItems.sort((a, b) => {
+            let valueA = a[key].toUpperCase();
+            let valueB = b[key].toUpperCase();
+
+            if (key === 'price') {
+              valueA = Number(valueA);
+              valueB = Number(valueB);
+            }
+
+            let comparison = 0;
+            if (valueA > valueB) comparison = 1;
+            if (valueA < valueB) comparison = -1;
+            return comparison;
+          }),
+        ],
       };
     }
     case SEARCH_SUCCESS: {

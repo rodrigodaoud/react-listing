@@ -8,7 +8,11 @@ import {
   addToFavouritesSuccess,
   removeFavouriteSuccess,
 } from '../../store/favourites/actions';
-import { loadMoreSuccess, searchSuccess } from '../../store/items/actions';
+import {
+  loadMoreSuccess,
+  searchSuccess,
+  sortItemsSuccess,
+} from '../../store/items/actions';
 
 import ItemsList from '../../components/ItemsList';
 import FavouritesModal from '../../components/FavouritesModal';
@@ -25,7 +29,8 @@ interface IProps {
   getItemsList: () => void;
   addToFavourites: (item: Items) => void;
   removeFavourite: (favourite: Items) => void;
-  search: (value: string) => void;
+  onSearch: (value: string) => void;
+  sortItems: (key: string) => void;
   loadMore: () => void;
 }
 
@@ -36,7 +41,8 @@ export const Home: React.FC<IProps> = ({
   getItemsList,
   addToFavourites,
   removeFavourite,
-  search,
+  onSearch,
+  sortItems,
   loadMore,
 }: IProps) => {
   React.useEffect(() => {
@@ -73,7 +79,7 @@ export const Home: React.FC<IProps> = ({
       <div className="home__logo container">
         <img className="home__logo-img" src={Logo} alt="wallapop" />
       </div>
-      <SearchBar search={search} />
+      <SearchBar onSearch={onSearch} />
       <FavouritesButton toggleFavourites={toggleFavourites} />
       {toggleModal ? (
         <FavouritesModal
@@ -87,6 +93,7 @@ export const Home: React.FC<IProps> = ({
         favourites={favourites}
         loadMoreItems={loadMoreItems}
         onAddToFavourites={onAddToFavourites}
+        sortItems={sortItems}
       />
     </div>
   );
@@ -105,9 +112,11 @@ const mapStateToProps = (store: RootState) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getItemsList: () => dispatch(getItems()),
-    addToFavourites: (item) => dispatch(addToFavouritesSuccess(item)),
-    removeFavourite: (favourite) => dispatch(removeFavouriteSuccess(favourite)),
-    search: (value) => dispatch(searchSuccess(value)),
+    addToFavourites: (item: Items) => dispatch(addToFavouritesSuccess(item)),
+    removeFavourite: (favourite: Items) =>
+      dispatch(removeFavouriteSuccess(favourite)),
+    onSearch: (value: string) => dispatch(searchSuccess(value)),
+    sortItems: (key) => dispatch(sortItemsSuccess(key)),
     loadMore: () => dispatch(loadMoreSuccess()),
   };
 };
