@@ -3,46 +3,49 @@ import { connect } from 'react-redux';
 
 import getItems from '../../store/items/thunk';
 import { Items } from '../../store/items/types';
-
-import ItemsList from '../../components/ItemsList';
 import { RootState } from '../../store';
-import FavouritesButton from '../../components/FavouritesButton';
 import {
   addToFavouritesSuccess,
   removeFavouriteSuccess,
 } from '../../store/favourites/actions';
+import { loadMoreSuccess, searchSuccess } from '../../store/items/actions';
+
+import ItemsList from '../../components/ItemsList';
 import FavouritesModal from '../../components/FavouritesModal';
+import FavouritesButton from '../../components/FavouritesButton';
+import SearchBar from '../../components/SearchBar';
 
 interface IProps {
   items: Items[];
   favourites: Items[];
-  loading: boolean;
+  filteredItems: Items[];
   getItemsList: () => void;
   addToFavourites: (item: Items) => void;
   removeFavourite: (favourite: Items) => void;
+  search: (value: string) => void;
+  loadMore: () => void;
 }
 
 export const Home: React.FC<IProps> = ({
   items,
   favourites,
-  loading,
+  filteredItems,
   getItemsList,
   addToFavourites,
   removeFavourite,
+  search,
+  loadMore,
 }: IProps) => {
   React.useEffect(() => {
     getItemsList();
   }, []);
 
-  const pageOffset = 5;
-  const [itemsLength, setItemsLength] = useState(pageOffset);
   const [toggleModal, setToggleModal] = useState(false);
   const [bodyScroll, setBodyScroll] = useState(false);
-  const slicedItems = items.slice(0, itemsLength);
 
   const loadMoreItems = () => {
-    if (slicedItems.length < items.length) {
-      setItemsLength(itemsLength + pageOffset);
+    if (filteredItems.length < items.length) {
+      loadMore();
     }
   };
 
@@ -64,6 +67,7 @@ export const Home: React.FC<IProps> = ({
 
   return (
     <div className="home">
+      <SearchBar search={search} />
       <FavouritesButton toggleFavourites={toggleFavourites} />
       {toggleModal ? (
         <FavouritesModal
@@ -73,7 +77,7 @@ export const Home: React.FC<IProps> = ({
         />
       ) : null}
       <ItemsList
-        items={slicedItems}
+        items={filteredItems}
         favourites={favourites}
         loadMoreItems={loadMoreItems}
         onAddToFavourites={onAddToFavourites}
@@ -83,8 +87,10 @@ export const Home: React.FC<IProps> = ({
 };
 
 const mapStateToProps = (store: RootState) => {
+  console.log(store);
   return {
     items: store.itemsState.items,
+    filteredItems: store.itemsState.filteredItems,
     loading: store.itemsState.loading,
     favourites: store.favouritesState.favourites,
   };
@@ -95,6 +101,8 @@ const mapDispatchToProps = (dispatch) => {
     getItemsList: () => dispatch(getItems()),
     addToFavourites: (item) => dispatch(addToFavouritesSuccess(item)),
     removeFavourite: (favourite) => dispatch(removeFavouriteSuccess(favourite)),
+    search: (value) => dispatch(searchSuccess(value)),
+    loadMore: () => dispatch(loadMoreSuccess()),
   };
 };
 

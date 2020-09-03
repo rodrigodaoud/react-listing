@@ -1,7 +1,8 @@
 export const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
 export const GET_ITEMS_FAIL = 'GET_ITEMS_FAIL';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
-export const SET_ITEMS_LENGTH = 'SET_ITEMS_LENGTH';
+export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
+export const LOAD_MORE_SUCCESS = 'LOAD_MORE_SUCCESS';
 
 export interface Items {
   title: string;
@@ -13,7 +14,10 @@ export interface Items {
 
 export interface ItemsState {
   loading: boolean;
+  pageOffset: number;
   items: Items[];
+  slicedItems: Items[];
+  filteredItems: Items[];
 }
 
 export interface ItemLoadingAction {
@@ -32,7 +36,19 @@ export interface ItemSuccessAction {
   items: Items[];
 }
 
+export interface SearchSuccessAction {
+  type: typeof SEARCH_SUCCESS;
+  value: string;
+}
+
+export type LoadMoreSuccessAction = {
+  type: typeof LOAD_MORE_SUCCESS;
+  items: Items[];
+};
+
 export type ItemActionTypes =
   | ItemFailAction
   | ItemSuccessAction
-  | ItemLoadingAction;
+  | ItemLoadingAction
+  | SearchSuccessAction
+  | LoadMoreSuccessAction;

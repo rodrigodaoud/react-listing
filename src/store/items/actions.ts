@@ -4,6 +4,8 @@ import {
   GET_ITEMS_FAIL,
   GET_ITEMS_SUCCESS,
   GET_ITEMS_LOADING,
+  SEARCH_SUCCESS,
+  LOAD_MORE_SUCCESS,
 } from './types';
 
 export const getItemsLoading = (): ItemActionTypes => {
@@ -25,5 +27,19 @@ export const getItemsFail = (): ItemActionTypes => {
   return {
     type: GET_ITEMS_FAIL,
     loading: false,
+  };
+};
+
+export const searchSuccess = (value: string): ItemActionTypes => {
+  return {
+    type: SEARCH_SUCCESS,
+    value,
+  };
+};
+
+export const loadMoreSuccess = (): ItemActionTypes => {
+  return {
+    type: LOAD_MORE_SUCCESS,
+    items: [],
   };
 };
