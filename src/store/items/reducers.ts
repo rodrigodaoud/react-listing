@@ -15,6 +15,7 @@ export const initialState: ItemsState = {
   slicedItems: [],
   filteredItems: [],
   pageOffset: 5,
+  key: '',
 };
 
 export const itemsReducer = (
@@ -47,6 +48,7 @@ export const itemsReducer = (
         slicedItems: [...state.items.slice(0, sliceTo)],
         filteredItems: [...state.items.slice(0, sliceTo)],
         pageOffset: sliceTo,
+        key: '',
       };
     }
     case SORT_ITEMS_SUCCESS: {
@@ -55,6 +57,8 @@ export const itemsReducer = (
         ...state,
         filteredItems: [
           ...state.filteredItems.sort((a, b) => {
+            let comparison = 0;
+            if (key === 'none') return comparison;
             let valueA = a[key].toUpperCase();
             let valueB = b[key].toUpperCase();
 
@@ -63,12 +67,12 @@ export const itemsReducer = (
               valueB = Number(valueB);
             }
 
-            let comparison = 0;
             if (valueA > valueB) comparison = 1;
             if (valueA < valueB) comparison = -1;
             return comparison;
           }),
         ],
+        key: action.key,
       };
     }
     case SEARCH_SUCCESS: {

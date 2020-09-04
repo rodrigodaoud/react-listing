@@ -16,6 +16,7 @@ export interface Items {
 export interface ItemsState {
   loading: boolean;
   pageOffset: number;
+  key: string;
   items: Items[];
   slicedItems: Items[];
   filteredItems: Items[];

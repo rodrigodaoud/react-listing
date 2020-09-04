@@ -26,6 +26,7 @@ interface IProps {
   items: Items[];
   favourites: Items[];
   filteredItems: Items[];
+  filterKey: string;
   getItemsList: () => void;
   addToFavourites: (item: Items) => void;
   removeFavourite: (favourite: Items) => void;
@@ -38,6 +39,7 @@ export const Home: React.FC<IProps> = ({
   items,
   favourites,
   filteredItems,
+  filterKey,
   getItemsList,
   addToFavourites,
   removeFavourite,
@@ -91,6 +93,7 @@ export const Home: React.FC<IProps> = ({
       <ItemsList
         items={filteredItems}
         favourites={favourites}
+        filterKey={filterKey}
         loadMoreItems={loadMoreItems}
         onAddToFavourites={onAddToFavourites}
         sortItems={sortItems}
@@ -100,11 +103,11 @@ export const Home: React.FC<IProps> = ({
 };
 
 const mapStateToProps = (store: RootState) => {
-  console.log(store);
   return {
     items: store.itemsState.items,
     filteredItems: store.itemsState.filteredItems,
     loading: store.itemsState.loading,
+    filterKey: store.itemsState.key,
     favourites: store.favouritesState.favourites,
   };
 };

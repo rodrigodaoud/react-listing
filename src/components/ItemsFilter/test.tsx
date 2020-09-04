@@ -1,13 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ItemsFilter from '.';
-import { Items } from '../../store/items/types';
-import { ItemsMock } from '../../data/ItemsMock';
 
 describe('ItemsFilter', () => {
   it('renders with options', () => {
     const sortItems = jest.fn();
-    const wrapper = shallow(<ItemsFilter sortItems={sortItems} />);
+    const filterKey = '';
+    const wrapper = shallow(
+      <ItemsFilter sortItems={sortItems} filterKey={filterKey} />
+    );
 
     expect(wrapper.exists()).toBe(true);
   });

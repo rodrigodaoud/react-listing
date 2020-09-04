@@ -1,0 +1,12 @@
+.items-filter {
+  font-size: 12px;
+  margin: 0 0 20px;
+
+  &__selector {
+    border: none;
+    background: transparent;
+    color: $-c-green;
+    outline: none;
+    margin: 0 0 0 5px;
+  }
+}

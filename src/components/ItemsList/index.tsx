@@ -11,6 +11,7 @@ import './style.scss';
 interface IProps {
   items: Items[];
   favourites: Items[];
+  filterKey: string;
   loadMoreItems: () => void;
   onAddToFavourites: (item: Items) => void;
   sortItems: (key: string) => void;
@@ -19,13 +20,14 @@ interface IProps {
 const ItemsList: React.FC<IProps> = ({
   items,
   favourites,
+  filterKey,
   loadMoreItems,
   onAddToFavourites,
   sortItems,
 }: IProps) => {
   return (
     <div className="items-list__wrapper">
-      <ItemsFilter sortItems={sortItems} />
+      <ItemsFilter sortItems={sortItems} filterKey={filterKey} />
       <ul className="items-list container">
         {items.map((item) => (
           <li key={item.title} className="items-list__card">

@@ -8,6 +8,7 @@ describe('ItemsList', () => {
   it('renders with items', () => {
     const items: Items[] = ItemsMock;
     const favourites: Items[] = ItemsMock;
+    const filterKey = '';
     const loadMoreItems = jest.fn();
     const onAddToFavourites = jest.fn();
     const sortItems = jest.fn();
@@ -15,6 +16,7 @@ describe('ItemsList', () => {
       <ItemsList
         items={items}
         favourites={favourites}
+        filterKey={filterKey}
         loadMoreItems={loadMoreItems}
         onAddToFavourites={onAddToFavourites}
         sortItems={sortItems}

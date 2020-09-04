@@ -1,4 +1,13 @@
 .items-list {
+  @media only screen and (min-width: 760px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (min-width: 1120px) {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
   &__wrapper {
     background-color: $-c-light-gray;
     padding: 10px 0;
@@ -12,6 +21,15 @@
     margin: 10px 0;
     padding: 0 10px 0 0;
     border-radius: 10px;
+
+    @media only screen and (min-width: 760px) {
+      flex-basis: 47%;
+      margin: 5px 5px;
+    }
+
+    @media only screen and (min-width: 1120px) {
+      flex-basis: 31%;
+    }
   }
 
   &__add {
