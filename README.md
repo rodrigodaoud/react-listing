@@ -32,3 +32,9 @@ To test the application, you can simply run:
 ```bash
 npm test
 ```
+
+## Design
+
+This project was based in a simple design that you can find in here:
+
+https://www.figma.com/file/MS6uGxQaSqmdgoCxCDANRr/Wallapop-Tech-Test?node-id=0%3A1
