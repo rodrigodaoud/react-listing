@@ -11,6 +11,7 @@
   &__title {
     font-weight: bold;
     font-size: 24px;
+    margin: 0 0 20px;
   }
 
   &__close {
@@ -28,14 +29,28 @@
 
   &__card {
     position: relative;
+
+    @media only screen and (min-width: 760px) {
+      max-width: 550px;
+      margin: 10px auto;
+    }
     &__wrapper {
       position: relative;
       height: 80%;
       padding: 20px 10px 10px;
       background-color: $-c-light-gray;
       margin: 40px 16px 0;
-      overflow: scroll;
+      overflow-y: scroll;
       border-radius: 10px;
+
+      @media only screen and (min-width: 760px) {
+        width: 55%;
+        margin: 60px auto 0;
+      }
+
+      @media only screen and (min-width: 1120px) {
+        width: 40%;
+      }
     }
   }
 

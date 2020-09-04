@@ -1,18 +1,21 @@
 import React from 'react';
 import { Items } from '../../store/items/types';
 import FavouritesCard from '../FavouritesCard';
+import SearchBar from '../SearchBar';
 import './style.scss';
 
 interface IProps {
-  favourites: Items[];
+  filteredFavourites: Items[];
   toggleFavourites: () => void;
   removeFavourite: (favourite: Items) => void;
+  onSearchFavourites: (value: string) => void;
 }
 
 const FavouritesModal: React.FC<IProps> = ({
-  favourites,
+  filteredFavourites,
   toggleFavourites,
   removeFavourite,
+  onSearchFavourites,
 }: IProps) => {
   const onClickHandler = (favourite: Items) => {
     removeFavourite(favourite);
@@ -28,7 +31,8 @@ const FavouritesModal: React.FC<IProps> = ({
         >
           X
         </button>
-        {favourites.map((favourite) => (
+        <SearchBar onSearch={onSearchFavourites} />
+        {filteredFavourites.map((favourite) => (
           <div key={favourite.title} className="favourites__card">
             <FavouritesCard favourite={favourite} />
             <button

@@ -2,6 +2,14 @@
   margin: 0 0 20px;
   position: relative;
 
+  @media only screen and (min-width: 760px) {
+    width: 50%;
+
+    .favourites & {
+      width: auto;
+    }
+  }
+
   &__input {
     box-sizing: border-box;
     width: 100%;
@@ -10,6 +18,10 @@
     background-color: $-c-light-gray;
     border-radius: 20px;
     border: none;
+
+    .favourites & {
+      background-color: $-c-white;
+    }
 
     &::placeholder {
       opacity: 0.5;

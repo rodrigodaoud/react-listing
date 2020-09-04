@@ -7,6 +7,7 @@ import { RootState } from '../../store';
 import {
   addToFavouritesSuccess,
   removeFavouriteSuccess,
+  searchFavouritesSuccess,
 } from '../../store/favourites/actions';
 import {
   loadMoreSuccess,
@@ -27,10 +28,12 @@ interface IProps {
   favourites: Items[];
   filteredItems: Items[];
   filterKey: string;
+  filteredFavourites: Items[];
   getItemsList: () => void;
   addToFavourites: (item: Items) => void;
   removeFavourite: (favourite: Items) => void;
   onSearch: (value: string) => void;
+  onSearchFavourites: (value: string) => void;
   sortItems: (key: string) => void;
   loadMore: () => void;
 }
@@ -40,10 +43,12 @@ export const Home: React.FC<IProps> = ({
   favourites,
   filteredItems,
   filterKey,
+  filteredFavourites,
   getItemsList,
   addToFavourites,
   removeFavourite,
   onSearch,
+  onSearchFavourites,
   sortItems,
   loadMore,
 }: IProps) => {
@@ -81,13 +86,16 @@ export const Home: React.FC<IProps> = ({
       <div className="home__logo container">
         <img className="home__logo-img" src={Logo} alt="wallapop" />
       </div>
-      <SearchBar onSearch={onSearch} />
-      <FavouritesButton toggleFavourites={toggleFavourites} />
+      <div className="home__header">
+        <SearchBar onSearch={onSearch} />
+        <FavouritesButton toggleFavourites={toggleFavourites} />
+      </div>
       {toggleModal ? (
         <FavouritesModal
-          favourites={favourites}
+          filteredFavourites={filteredFavourites}
           toggleFavourites={toggleFavourites}
           removeFavourite={removeFavourite}
+          onSearchFavourites={onSearchFavourites}
         />
       ) : null}
       <ItemsList
@@ -103,12 +111,14 @@ export const Home: React.FC<IProps> = ({
 };
 
 const mapStateToProps = (store: RootState) => {
+  console.log(store);
   return {
     items: store.itemsState.items,
     filteredItems: store.itemsState.filteredItems,
     loading: store.itemsState.loading,
     filterKey: store.itemsState.key,
     favourites: store.favouritesState.favourites,
+    filteredFavourites: store.favouritesState.filteredFavourites,
   };
 };
 
@@ -119,6 +129,8 @@ const mapDispatchToProps = (dispatch) => {
     removeFavourite: (favourite: Items) =>
       dispatch(removeFavouriteSuccess(favourite)),
     onSearch: (value: string) => dispatch(searchSuccess(value)),
+    onSearchFavourites: (value: string) =>
+      dispatch(searchFavouritesSuccess(value)),
     sortItems: (key) => dispatch(sortItemsSuccess(key)),
     loadMore: () => dispatch(loadMoreSuccess()),
   };

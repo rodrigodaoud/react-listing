@@ -3,10 +3,12 @@ import {
   REMOVE_FAVOURITE_SUCCESS,
   FavouritesActionTypes,
   FavouritesState,
+  SEARCH_FAVOURITES_SUCCESS,
 } from './types';
 
 export const initialState: FavouritesState = {
   favourites: [],
+  filteredFavourites: [],
 };
 
 export const favouritesReducer = (
@@ -17,6 +19,7 @@ export const favouritesReducer = (
     case ADD_TO_FAVOURITES_SUCCESS:
       return {
         favourites: [...state.favourites, action.favourite],
+        filteredFavourites: [...state.favourites, action.favourite],
       };
     case REMOVE_FAVOURITE_SUCCESS:
       return {
@@ -25,7 +28,22 @@ export const favouritesReducer = (
             (favourite) => favourite !== action.favourite
           ),
         ],
+        filteredFavourites: [
+          ...state.favourites.filter(
+            (favourite) => favourite !== action.favourite
+          ),
+        ],
       };
+    case SEARCH_FAVOURITES_SUCCESS: {
+      return {
+        ...state,
+        filteredFavourites: [
+          ...state.favourites.filter((item) =>
+            item.title.toLowerCase().includes(action.value.toLowerCase())
+          ),
+        ],
+      };
+    }
     default:
       return state;
   }

@@ -6,17 +6,19 @@ import { ItemsMock } from '../../data/ItemsMock';
 
 describe('Favourites Modal', () => {
   it('renders with items', () => {
-    const favourites: Items[] = ItemsMock;
+    const filteredFavourites: Items[] = ItemsMock;
     const toggleFavourites = jest.fn();
     const removeFavourite = jest.fn();
+    const onSearchFavourites = jest.fn();
     const wrapper = shallow(
       <FavouritesModal
-        favourites={favourites}
+        filteredFavourites={filteredFavourites}
         toggleFavourites={toggleFavourites}
         removeFavourite={removeFavourite}
+        onSearchFavourites={onSearchFavourites}
       />
     );
-    const favourite: Items = favourites[0];
+    const favourite: Items = filteredFavourites[0];
 
     expect(wrapper.exists()).toBe(true);
     expect(favourite).toBeDefined();
