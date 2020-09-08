@@ -1,4 +1,4 @@
-# Wallapop Tech Test
+# React Listing
 
 ## Installation
 
